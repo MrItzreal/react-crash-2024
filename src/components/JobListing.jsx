@@ -10,7 +10,7 @@ const JobListing = ({ job }) => {
 
         <div className="mb-5">{job.description}</div>
 
-        <h3 className="text-indigo-500 mb-2">{job.salary}</h3>
+        <h3 className="text-indigo-500 mb-2">{job.salary} / Year</h3>
 
         <div className="border border-gray-100 mb-5"></div>
 
