@@ -1,9 +1,29 @@
+import { useState, useEffect } from "react";
 import JobListing from "./JobListing";
-import jobs from "../jobs.json";
 
 // eslint-disable-next-line react/prop-types
 const JobListings = ({ isHome = false }) => {
-  const jobListings = isHome ? jobs.slice(0, 3) : jobs;
+  //name of state, function name of state.
+  const [jobs, setJobs] = useState([]); //info fetched from API we go inside empty [].
+  const [loading, setLoading] = useState(true); //spinner effect when info fetched from API.
+
+  //NOTE: useEffect takes both a "function" and "dependency array".
+  //In most cases, an empty [] inside an use-effect
+  //is ok, since this avoids an infinite loop.
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        const res = await fetch("http://localhost:8000/jobs");
+        const data = await res.json();
+        setJobs(data);
+      } catch (error) {
+        console.log("Error fetching data", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchJobs();
+  }, []);
 
   return (
     <section className="bg-blue-50 px-4 py-10">
@@ -12,7 +32,7 @@ const JobListings = ({ isHome = false }) => {
           {isHome ? "Recent Jobs" : "Browse Jobs "}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {jobListings.map((job) => (
+          {jobs.map((job) => (
             <JobListing key={job.id} job={job} />
           ))}
         </div>
@@ -22,3 +42,8 @@ const JobListings = ({ isHome = false }) => {
 };
 
 export default JobListings;
+
+//useEffect Hook: allows components to have have side effects
+//the side effect we want is one that fetches data when the component is rendered.
+//And when we get the job list from the API we want to put
+//them in "state" thus why we brought in useState.
