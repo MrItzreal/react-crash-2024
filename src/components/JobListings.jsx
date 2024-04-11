@@ -14,8 +14,8 @@ const JobListings = ({ isHome = false }) => {
   useEffect(() => {
     const fetchJobs = async () => {
       const apiUrl = isHome
-        ? "http://localhost:8000/jobs?_limit=3" //shows 3 postings in home page
-        : "http://localhost:8000/jobs"; //shows all postings in jobs page
+        ? "/api/jobs?_limit=3" //shows 3 postings in home page (/api over http because of proxy).
+        : "/api/jobs"; //shows all postings in jobs page (/api over http because of proxy).
       try {
         const res = await fetch(apiUrl);
         const data = await res.json();
