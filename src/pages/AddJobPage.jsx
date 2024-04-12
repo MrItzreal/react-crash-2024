@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const AddJobPage = () => {
+const AddJobPage = ({ addJobSubmit }) => {
   //name of state, function name of state.
   //NOTE: adding a state for every field in your form is good practice.
   const [title, setTitle] = useState("");
@@ -12,6 +13,10 @@ const AddJobPage = () => {
   const [companyDescription, setCompanyDescription] = useState("");
   const [contactEmail, setContactEmail] = useState("");
   const [contactPhone, setContactPhone] = useState("");
+
+  //useNavigate allows you to navigate to a different URL within a functional component
+  //We have to initialize this hook before using it.
+  const navigate = useNavigate();
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -30,7 +35,10 @@ const AddJobPage = () => {
         contactPhone,
       },
     };
-    console.log(newJob);
+
+    addJobSubmit(newJob); //1st, This submits the form
+
+    return navigate("/jobs"); //2nd,This redirects to jobs page.
   };
 
   return (
