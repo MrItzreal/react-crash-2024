@@ -73,4 +73,4 @@ export default App;
 
 // NOTES ABOUT HTTP methods:
 // POST adds data, GET requests data &
-// PUT updates data & DELETE deletes data
+// PUT updates data & DELETE deletes data.
