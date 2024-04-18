@@ -65,4 +65,53 @@ This guide will walk you through setting up a new React project using Vite & Tai
 - Feel free to delete `App.css` if you're using Tailwind CSS.
 - Clear the content of `App.jsx` and `index.css` as they'll house your main component and styles.
 
+## Project Dependencies
+
+This document outlines the Node Package Manager (NPM) dependencies used in this project.
+
+### Important Packages
+
+- **react-router-dom:** Provides routing functionalities for navigating between different pages within your React application. You can install it using:
+
+```bash
+npm i react-router-dom
+```
+
+### Useful Packages
+
+- **react-icons:** Enables the usage of icons from popular icon libraries like Font Awesome. Install it with:
+
+```bash
+npm i react-icons
+```
+
+- **react-spinners:** Offers a variety of loading spinner components to enhance user experience. Install it using:
+
+```bash
+npm i react-spinners
+```
+
+- **react-toastify:** Provides notification functionality. Refer to the `MainLayout` component for setup instructions after installation:
+
+```bash
+npm i react-toastify
+```
+
+### Development Dependency
+
+- **json-server** (dev dependency): A lightweight JSON server for creating a mock API. Install it for development purposes with the `-D` flag:
+
+```bash
+npm i -D json-server
+```
+
+**Note:**
+
+- Remember to add `json-server` to your `package.json` file before running the server.
+- Start the mock server using:
+
+```bash
+npm run server
+```
+
 This guide provides a basic setup for a React + Vite project with optional Tailwind CSS integration. Remember to consult the official documentation for further customization and advanced features.
